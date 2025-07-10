@@ -187,7 +187,7 @@ export const products = [
     id: 17,
     name: "Черный чай",
     price: "18 манат",
-    image: "https://stopfake.kz/wp-content/uploads/2023/12/8743.jpg",
+    image: "https://static.tengrinews.kz/userdata/news/2024/news_532619/thumb_b/photo_469203.jpeg",
     badges: ["Новинка", "Популярный выбор"],
     category: "чай",
     description:"Чёрный чай Классический крепкий чай с насыщенным ароматом. Идеален для бодрости утром.",
