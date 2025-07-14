@@ -4,7 +4,6 @@ import { Button } from "./Button"
 export function ProductCard({ product, onProductClick, isDark }) {
   const [showDescription, setShowDescription] = useState(false)
 
-
   useEffect(() => {
     if (showDescription) {
       document.documentElement.style.overflow = "hidden"
@@ -24,8 +23,6 @@ export function ProductCard({ product, onProductClick, isDark }) {
     setShowDescription((prev) => !prev)
   }
 
- 
-
   return (
     <>
       <div
@@ -37,7 +34,7 @@ export function ProductCard({ product, onProductClick, isDark }) {
           <img
             src={product.image || "/placeholder.svg"}
             alt={product.name}
-            className="w-full h-48 object-cover"
+            className="w-full h-40 sm:h-48 md:h-56 object-cover"
           />
           <div className="absolute top-2 left-2 flex flex-col space-y-1">
             {product.badges.map((badge, index) => (
@@ -59,12 +56,12 @@ export function ProductCard({ product, onProductClick, isDark }) {
           </div>
         </div>
 
-        <div className="p-4">
-          <h3 className={`font-semibold mb-2 ${isDark ? "text-white" : "text-gray-800"}`}>
+        <div className="p-3 sm:p-4">
+          <h3 className={`font-semibold mb-2 text-base sm:text-lg ${isDark ? "text-white" : "text-gray-800"}`}>
             {product.name}
           </h3>
-          <div className="flex items-center justify-between">
-            <span className={`text-lg font-bold ${isDark ? "text-white" : "text-gray-800"}`}>
+          <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-2 sm:gap-0">
+            <span className={`text-md sm:text-lg font-bold ${isDark ? "text-white" : "text-gray-800"}`}>
               {product.price}
             </span>
             <Button
@@ -78,24 +75,19 @@ export function ProductCard({ product, onProductClick, isDark }) {
       </div>
 
       {showDescription && (
-        <div className="fixed inset-0 z-50 bg-black/50 flex items-center justify-center px-4">
-          <div className="bg-white max-w-sm w-full rounded-xl p-6 relative shadow-lg">
+        <div className="fixed inset-0 z-50 bg-black/50 flex items-center justify-center px-2 sm:px-4">
+          <div className="bg-white w-full max-w-md sm:max-w-lg rounded-xl p-4 sm:p-6 relative shadow-lg max-h-[90vh] overflow-y-auto">
             <button
-              className="absolute top-3 right-4 text-gray-500 hover:text-black text-xl"
+              className="absolute top-3 right-4 text-gray-500 hover:text-black text-2xl"
               onClick={toggleDescription}
             >
               ×
             </button>
-            <img src={product.image} alt="" className="mb-4 rounded-md" />
-            <h2 className="text-lg font-bold mb-2">{product.name}</h2>
-            <p className="text-sm text-gray-700 mb-4">
+            <img src={product.image} alt="" className="mb-4 rounded-md w-full max-h-64 object-cover" />
+            <h2 className="text-lg sm:text-xl font-bold mb-2">{product.name}</h2>
+            <p className="text-sm sm:text-base text-gray-700 mb-4">
               {product.description || "Описание отсутствует"}
             </p>
-
-            
-
-            <div className="flex flex-col gap-2">
-            </div>
           </div>
         </div>
       )}

@@ -1,5 +1,5 @@
 import { useState } from "react"
-import { X, Minus, Plus, Images } from "lucide-react"
+import { X, Minus, Plus } from "lucide-react"
 import { Button } from "./Button"
 
 export function ProductModal({ product, isOpen, onClose, onAddToCart, isDark }) {
@@ -16,12 +16,12 @@ export function ProductModal({ product, isOpen, onClose, onAddToCart, isDark }) 
   const decrementQuantity = () => setQuantity((prev) => Math.max(1, prev - 1))
 
   return (
-    <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50 p-4">
+    <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50 p-2 sm:p-4">
       <div
-        className={`rounded-lg max-w-md w-full max-h-[90vh] overflow-y-auto ${isDark ? "bg-gray-800" : "bg-amber-50"}`}
+        className={`rounded-lg w-full max-w-sm sm:max-w-md max-h-[90vh] overflow-y-auto ${isDark ? "bg-gray-800" : "bg-amber-50"}`}
       >
-        <div className="flex justify-between items-center p-4 border-b border-gray-200">
-          <h2 className={`text-lg font-semibold ${isDark ? "text-white" : "text-gray-800"}`}>{product.name}</h2>
+        <div className="flex justify-between items-center p-3 sm:p-4 border-b border-gray-200">
+          <h2 className={`text-base sm:text-lg font-semibold ${isDark ? "text-white" : "text-gray-800"}`}>{product.name}</h2>
           <button
             onClick={onClose}
             className={`p-1 ${isDark ? "text-gray-400 hover:text-white" : "text-gray-600 hover:text-gray-800"}`}
@@ -30,7 +30,7 @@ export function ProductModal({ product, isOpen, onClose, onAddToCart, isDark }) 
           </button>
         </div>
 
-        <div className="p-4">
+        <div className="p-3 sm:p-4">
           {product.badges && product.badges.length > 0 && (
             <div className="mb-4 flex flex-wrap gap-2">
               {product.badges.map((badge, index) => (
@@ -54,24 +54,24 @@ export function ProductModal({ product, isOpen, onClose, onAddToCart, isDark }) 
 
           <div className="mb-4">
             <img
-              src={product.image }
+              src={product.image}
               alt={product.name}
-              className="w-full h-48 object-cover rounded-lg"
+              className="w-full h-40 sm:h-48 object-cover rounded-lg"
             />
           </div>
 
-        {product.description && (
-  <p className={`text-sm mb-4 ${isDark ? "text-gray-300" : "text-gray-600"}`}>
-    {product.description}
-  </p>
-)}
- 
-
+          {product.description && (
+            <p className={`text-sm mb-4 ${isDark ? "text-gray-300" : "text-gray-600"}`}>
+              {product.description}
+            </p>
+          )}
 
           <p className={`text-sm mb-4 ${isDark ? "text-gray-400" : "text-gray-500"}`}>Вес по заказу!!!!!!</p>
 
           <div className="flex items-center justify-between mb-6">
-            <span className={`text-xl font-bold ${isDark ? "text-white" : "text-gray-800"}`}>{product.price}</span>
+            <span className={`text-lg sm:text-xl font-bold ${isDark ? "text-white" : "text-gray-800"}`}>
+              {product.price}
+            </span>
 
             <div className="flex items-center space-x-3">
               <button
